@@ -1,8 +1,9 @@
 import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList.js";
-import React, { useState } from "react";
+import Footer from "./components/Footer.js"
 
 function App() {
   const products = [
@@ -44,6 +45,7 @@ function App() {
           decrementQuantity={decrementQuantity}
         />
       </main>
+       <Footer/>
     </>
   );
 }
