@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList.js";
-import Footer from "./components/Footer.js"
+import Footer from "./components/Footer.js";
 
 function App() {
   const products = [
@@ -20,18 +20,25 @@ function App() {
   ];
 
   let [productList, setProductList] = useState(products);
+  let [totalAmount, setTotalAmount] = useState(0);
 
   const incrementQuantity = (index) => {
     let newProductlist = [...productList];
+    let newTotalAmount = [totalAmount];
     newProductlist[index].quantity++;
+    newTotalAmount += newProductlist[index].price;
+    setTotalAmount(newTotalAmount);
     setProductList(newProductlist);
   };
 
   const decrementQuantity = (index) => {
     let newProductlist = [...productList];
-    newProductlist[index].quantity > 0
-      ? newProductlist[index].quantity--
-      : (newProductlist[index].quantity = 0);
+    let newTotalAmount = [totalAmount];
+    if (newProductlist[index].quantity > 0) {
+      newProductlist[index].quantity--;
+      newTotalAmount -= newProductlist[index].price;
+    }
+    setTotalAmount(newTotalAmount);
     setProductList(newProductlist);
   };
 
@@ -45,7 +52,7 @@ function App() {
           decrementQuantity={decrementQuantity}
         />
       </main>
-       <Footer/>
+      <Footer totalAmount={totalAmount} />
     </>
   );
 }
