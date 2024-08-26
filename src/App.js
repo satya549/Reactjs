@@ -24,7 +24,7 @@ function App() {
 
   const incrementQuantity = (index) => {
     let newProductlist = [...productList];
-    let newTotalAmount = [totalAmount];
+    let newTotalAmount = totalAmount;
     newProductlist[index].quantity++;
     newTotalAmount += newProductlist[index].price;
     setTotalAmount(newTotalAmount);
@@ -33,7 +33,7 @@ function App() {
 
   const decrementQuantity = (index) => {
     let newProductlist = [...productList];
-    let newTotalAmount = [totalAmount];
+    let newTotalAmount = totalAmount;
     if (newProductlist[index].quantity > 0) {
       newProductlist[index].quantity--;
       newTotalAmount -= newProductlist[index].price;
@@ -41,6 +41,15 @@ function App() {
     setTotalAmount(newTotalAmount);
     setProductList(newProductlist);
   };
+
+  const resetQuantity = () =>{
+    let newProductlist = [...productList];
+    newProductlist.map((products) => {
+      products.quantity = 0
+    })
+    setProductList(newProductlist);
+    setTotalAmount(0);
+  }
 
   return (
     <>
@@ -52,7 +61,7 @@ function App() {
           decrementQuantity={decrementQuantity}
         />
       </main>
-      <Footer totalAmount={totalAmount} />
+      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity}/>
     </>
   );
 }
