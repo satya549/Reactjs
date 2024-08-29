@@ -9,7 +9,7 @@ export default function ProductList(props) {
         key={i}
         incrementQuantity={props.incrementQuantity}
         index={i}
-        decrementQuantity={props.decrementQuantity}
+        decrementQuantity={props.decrementQuantity} removeIten={props.removeIten}
       />
     );
   });

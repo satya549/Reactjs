@@ -42,14 +42,24 @@ function App() {
     setProductList(newProductlist);
   };
 
-  const resetQuantity = () =>{
+  const resetQuantity = () => {
     let newProductlist = [...productList];
     newProductlist.map((products) => {
-      products.quantity = 0
-    })
+      products.quantity = 0;
+    });
     setProductList(newProductlist);
     setTotalAmount(0);
-  }
+  };
+
+  const removeItem = (index) => {
+    let newProductlist = [...productList];
+    let newTotalAmount = totalAmount;
+    newTotalAmount -=
+      newProductlist[index].quantity * newProductlist[index].price;
+    newProductlist.splice(index, 1);
+    setProductList(newProductlist);
+    setTotalAmount(newTotalAmount);
+  };
 
   return (
     <>
@@ -59,9 +69,10 @@ function App() {
           productList={productList}
           incrementQuantity={incrementQuantity}
           decrementQuantity={decrementQuantity}
+          removeItem={removeItem}
         />
       </main>
-      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity}/>
+      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} />
     </>
   );
 }
