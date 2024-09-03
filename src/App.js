@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList.js";
 import Footer from "./components/Footer.js";
+import AddItem from "./components/AddItem.js";
 
 function App() {
   const products = [
@@ -65,6 +66,7 @@ function App() {
     <>
       <Navbar />
       <main className="container mt-5">
+        <AddItem/>
         <ProductList
           productList={productList}
           incrementQuantity={incrementQuantity}

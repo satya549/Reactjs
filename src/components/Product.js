@@ -47,7 +47,7 @@ export default function Product(props) {
       <button
         className="col-2 btn btn-danger"
         onClick={() => {
-          props.removeitem(props.index);
+          props.removeItem(props.index);
         }}>
         Remove
       </button>
